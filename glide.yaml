@@ -1,0 +1,3 @@
+package: github.com/singlehopllc/lmsensorbeat
+import:
+- package: github.com/mdlayher/lmsensors

@@ -1,0 +1,7 @@
+/.idea
+/build
+/.git
+.DS_Store
+/lmsensorbeat
+/lmsensorbeat.test
+*.pyc

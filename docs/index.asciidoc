@@ -1,0 +1,5 @@
+= Lmsensorbeat Docs
+
+Welcome to the Lmsensorbeat documentation.
+
+
