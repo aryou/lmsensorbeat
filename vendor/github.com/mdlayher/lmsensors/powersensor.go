@@ -11,27 +11,27 @@ var _ Sensor = &PowerSensor{}
 // in watts.
 type PowerSensor struct {
 	// The name of the sensor.
-	Name string
+	Name string `json:"name"`
 
 	// The average electrical power consumption, in watts, indicated
 	// by the sensor.
-	Average float64
+	Average float64 `json:"average"`
 
 	// The interval of time over which the average electrical power consumption
 	// is collected.
-	AverageInterval time.Duration
+	AverageInterval time.Duration `json:"average_interval"`
 
 	// Whether or not this sensor has a battery.
-	Battery bool
+	Battery bool `json:"battery"`
 
 	// The model number of the sensor.
-	ModelNumber string
+	ModelNumber string `json:"model_number"`
 
 	// Miscellaneous OEM information about the sensor.
-	OEMInfo string
+	OEMInfo string `json:"oem_info"`
 
 	// The serial number of the sensor.
-	SerialNumber string
+	SerialNumber string `json:"serial_number"`
 }
 
 func (s *PowerSensor) name() string        { return s.Name }

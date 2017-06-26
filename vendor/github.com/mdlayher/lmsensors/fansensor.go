@@ -9,21 +9,21 @@ var _ Sensor = &FanSensor{}
 // A FanSensor is a Sensor that detects fan speeds in rotations per minute.
 type FanSensor struct {
 	// The name of the sensor.
-	Name string
+	Name string `json:"name"`
 
 	// Whether or not the fan speed is below the minimum threshold.
-	Alarm bool
+	Alarm bool `json:"alarm"`
 
 	// Whether or not the fan will sound an audible alarm when fan speed is
 	// below the minimum threshold.
-	Beep bool
+	Beep bool `json:"beep"`
 
 	// The input fan speed, in rotations per minute, indicated by the sensor.
-	Input int
+	Input int `json:"input"`
 
 	// The low threshold fan speed, in rotations per minute, indicated by the
 	// sensor.
-	Minimum int
+	Minimum int `json:"minimum"`
 }
 
 func (s *FanSensor) name() string        { return s.Name }

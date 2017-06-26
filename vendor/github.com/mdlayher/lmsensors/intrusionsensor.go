@@ -6,11 +6,11 @@ var _ Sensor = &IntrusionSensor{}
 // has been opened.
 type IntrusionSensor struct {
 	// The name of the sensor.
-	Name string
+	Name string `json:"name"`
 
 	// Whether or not the machine's chassis has been opened, and the alarm
 	// has been triggered.
-	Alarm bool
+	Alarm bool `json:"alarm"`
 }
 
 func (s *IntrusionSensor) name() string        { return s.Name }

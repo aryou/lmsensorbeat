@@ -4,7 +4,7 @@
 
 lmsensorbeat:
   # Defines how often an event is sent to the output
-  period: 1s
+  period: 30s
 
 #================================ General =====================================
 
@@ -29,12 +29,10 @@ lmsensorbeat:
 #-------------------------- Elasticsearch output ------------------------------
 output.elasticsearch:
   # Array of hosts to connect to.
-  hosts: ["silo.stage.shim.singlehop.net:4506"]
+  hosts: ["localhost:9200"]
 
   # Optional protocol and basic auth credentials.
-  protocol: "https"
-  ssl.verification_mode: none
-  path: /f98ce309-0b2b-466e-b4bc-960655f9af35
+  #protocol: "https"
   #username: "elastic"
   #password: "changeme"
 

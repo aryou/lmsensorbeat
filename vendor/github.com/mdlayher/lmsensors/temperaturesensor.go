@@ -25,35 +25,35 @@ var _ Sensor = &TemperatureSensor{}
 // Celsius.
 type TemperatureSensor struct {
 	// The name of the sensor.
-	Name string
+	Name string `json:"name"`
 
 	// A label that describes what the sensor is monitoring.  Label may be
 	// empty.
-	Label string
+	Label string `json:"label"`
 
 	// Whether or not the sensor has an alarm triggered.
-	Alarm bool
+	Alarm bool `json:"alarm"`
 
 	// Whether or not the sensor will sound an audible alarm if an alarm
 	// is triggered.
-	Beep bool
+	Beep bool `json:"beep"`
 
 	// The type of sensor used to report tempearatures.
-	Type TemperatureSensorType
+	Type TemperatureSensorType `json:"temperature_sensor_type"`
 
 	// The input temperature, in degrees Celsius, indicated by the sensor.
-	Input float64
+	Input float64 `json:"input"`
 
 	// A high threshold temperature, in degrees Celsius, indicated by the
 	// sensor.
-	High float64
+	High float64 `json:"high"`
 
 	// A critical threshold temperature, in degrees Celsius, indicated by the
 	// sensor.
-	Critical float64
+	Critical float64 `json:"critical"`
 
 	// Whether or not the temperature is past the critical threshold.
-	CriticalAlarm bool
+	CriticalAlarm bool `json:"critical_alarm"`
 }
 
 func (s *TemperatureSensor) name() string        { return s.Name }

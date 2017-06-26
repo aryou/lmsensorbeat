@@ -9,24 +9,24 @@ var _ Sensor = &VoltageSensor{}
 // A VoltageSensor is a Sensor that detects voltage.
 type VoltageSensor struct {
 	// The name of the sensor.
-	Name string
+	Name string `json:"name"`
 
 	// A label that describes what the sensor is monitoring.  Label may be
 	// empty.
-	Label string
+	Label string `json:"label"`
 
 	// Whether or not the sensor has an alarm triggered.
-	Alarm bool
+	Alarm bool `json:"alarm"`
 
 	// Whether or not the sensor will sound an audible alarm when an alarm
 	// is triggered.
-	Beep bool
+	Beep bool `json:"beep"`
 
 	// The input voltage indicated by the sensor.
-	Input float64
+	Input float64 `json:"input"`
 
 	// The maximum voltage threshold indicated by the sensor.
-	Maximum float64
+	Maximum float64 `json:"maximum"`
 }
 
 func (s *VoltageSensor) name() string        { return s.Name }

@@ -9,23 +9,23 @@ var _ Sensor = &CurrentSensor{}
 // A CurrentSensor is a Sensor that detects current in Amperes.
 type CurrentSensor struct {
 	// The name of the sensor.
-	Name string
+	Name string `json:"name"`
 
 	// A label that describes what the sensor is monitoring.  Label may be
 	// empty.
-	Label string
+	Label string `json:"label"`
 
 	// Whether or not the sensor has an alarm triggered.
-	Alarm bool
+	Alarm bool `json:"alarm"`
 
 	// The input current, in Amperes, indicated by the sensor.
-	Input float64
+	Input float64 `json:"input"`
 
 	// The maximum current threshold, in Amperes, indicated by the sensor.
-	Maximum float64
+	Maximum float64 `json:"maximum"`
 
 	// The critical current threshold, in Amperes, indicated by the sensor.
-	Critical float64
+	Critical float64 `json:"critical"`
 }
 
 func (s *CurrentSensor) name() string        { return s.Name }

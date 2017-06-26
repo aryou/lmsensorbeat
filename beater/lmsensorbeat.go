@@ -1,9 +1,10 @@
 package beater
 
 import (
-	"errors"
+	//"errors"
 	"fmt"
 	"reflect"
+	"strings"
 	"time"
 
 	"github.com/elastic/beats/libbeat/beat"
@@ -50,19 +51,21 @@ func (bt *Lmsensorbeat) Run(b *beat.Beat) error {
 	ticker := time.NewTicker(bt.config.Period)
 	counter := 1
 	scanner := lmsensors.New()
-	devices, err := scanner.Scan()
-	if err != nil {
-		logp.Err("Error Scanning For Devices: %s", err)
-		return err
-	}
+
 	for {
 		select {
 		case <-bt.done:
 			return nil
 		case <-ticker.C:
 		}
+		devices, err := scanner.Scan()
+		if err != nil {
+			logp.Warn("Error Scanning For Devices: %s", err)
+			continue
+		}
 		if len(devices) == 0 {
-			return errors.New("No Devices Found!")
+			logp.Warn("No Devices Found!")
+			continue
 		}
 		var events []common.MapStr
 		//var event common.MapStr
@@ -74,10 +77,10 @@ func (bt *Lmsensorbeat) Run(b *beat.Beat) error {
 					"sensor": sensor,
 				}
 				stype := bt.getType(sensor)
-				logp.Info("Sensor Type: %s", bt.getType(sensor))
+				//logp.Info("Sensor Type: %s", bt.getType(sensor))
 				event := common.MapStr{
 					"@timestamp": common.Time(time.Now()),
-					"type":       stype,
+					"type":       strings.ToLower(stype),
 					"device":     sdata,
 				}
 				events = append(events, event)
